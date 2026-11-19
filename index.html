@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<!-- Het thema waarmee de site opent. Standaard is dit GTA VI.
+     Wil je een ander startthema? Zet hier dezelfde id als SITE.defaultTheme
+     in assets/js/data.js, zodat de allereerste weergave meteen klopt. -->
+<html lang="nl" data-theme="gta6">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mickey Design — YouTube Thumbnail Designer</title>
+  <meta id="metaDescription" name="description" content="Bekijk het thumbnailportfolio van Mickey Design en bestel jouw YouTube-thumbnail via Discord." />
+  <link rel="canonical" href="https://mickeydesign.nl/" />
+
+  <!-- Open Graph (voor o.a. Discord/WhatsApp previews) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Mickey Design" />
+  <meta property="og:title" content="Mickey Design — YouTube Thumbnail Designer" />
+  <meta id="ogDescription" property="og:description" content="YouTube thumbnails die opvallen. Bestel jouw thumbnail via Discord." />
+  <meta property="og:url" content="https://mickeydesign.nl/" />
+  <meta property="og:image" content="images/altijdmartingta6.png" />
+  <meta property="og:locale" content="nl_NL" />
+  <!-- Twitter/X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mickey Design — YouTube Thumbnail Designer" />
+  <meta name="twitter:description" content="YouTube thumbnails die opvallen. Bestel jouw thumbnail via Discord." />
+  <meta name="twitter:image" content="images/altijdmartingta6.png" />
+  <meta name="theme-color" content="#09a9ff" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="assets/icons/icon.svg" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Mickey Design" />
+
+  <!-- Structured data (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Mickey Design",
+    "description": "YouTube thumbnail designer. Opvallende gaming-thumbnails op maat.",
+    "url": "https://mickeydesign.nl/",
+    "image": "https://mickeydesign.nl/images/altijdmartingta6.png",
+    "priceRange": "€5+",
+    "areaServed": "Worldwide",
+    "serviceType": "YouTube thumbnail design",
+    "founder": { "@type": "Person", "name": "Mickey Design" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23088ee8'/%3E%3Ctext x='50' y='65' text-anchor='middle' font-family='Arial' font-size='42' font-weight='900' fill='white'%3EMD%3C/text%3E%3C/svg%3E" />
+
+  <!-- Gekozen thema direct toepassen zodat er geen flits is bij het laden. -->
+  <script>
+    try {
+      var mdTheme = localStorage.getItem("md-theme");
+      if (mdTheme) document.documentElement.setAttribute("data-theme", mdTheme);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <!-- ===== Loader ===== -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <span class="loader-mark">MD</span>
+    <span class="loader-bar"><span class="loader-bar-fill"></span></span>
+  </div>
+
+  <div class="fx-layer" id="fxLayer" aria-hidden="true"></div>
+  <div class="datefx-layer" id="dateFx" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="theme-flash" id="themeFlash" aria-hidden="true"></div>
+  <a class="skip-link" href="#werk" data-i18n="skip">Naar het werk</a>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header" id="top">
+    <div class="holiday-lights" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="theme-garland" id="themeGarland" aria-hidden="true"><!-- gevuld op basis van thema --></div>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+    <div class="wrap header-inner">
+      <a class="brand" href="#home" aria-label="Mickey Design - Home">
+        <span class="brand-mark" aria-hidden="true">MD</span>
+        <span class="brand-text" id="brandName">Mickey Design</span>
+      </a>
+
+      <button class="bauble" id="bauble" type="button" aria-label="Kerstverrassing" title="Klik voor een kerstverrassing">
+        <span class="bauble-shine" aria-hidden="true"></span>
+      </button>
+
+      <div class="theme-picker" id="themePicker">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Thema kiezen" data-i18n-aria="theme.choose" aria-haspopup="listbox" aria-expanded="false" title="Kies een thema" data-i18n-title="theme.choose">
+          <span class="theme-emoji" aria-hidden="true">🌴</span>
+        </button>
+        <div class="theme-menu" id="themeMenu" role="listbox" aria-label="Kies een thema" data-label="Kies een thema"><!-- gevuld vanuit data.js --></div>
+      </div>
+
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Taal" data-i18n-aria="lang.toggle" title="Taal wisselen (NL/EN)" data-i18n-title="lang.toggle">
+        <span class="lang-label" id="langLabel">NL</span>
+      </button>
+
+      <nav class="nav" aria-label="Hoofdmenu">
+        <a href="#home" data-i18n="nav.home">Home</a>
+        <a href="#werk" data-i18n="nav.werk">Werk</a>
+        <a href="#creators" data-i18n="nav.creators">Creators</a>
+        <a href="#bestellen" data-i18n="nav.bestellen">Bestellen</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="#over" data-i18n="nav.over">Over</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <a class="btn btn-primary header-cta order-link" data-order-link href="https://discord.gg/StqqMKKeu6" target="_blank" rel="noopener noreferrer"><span data-i18n="cta.order">Bestel via Discord</span> <span aria-hidden="true">↗</span></a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Menu openen" data-i18n-aria="menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home" data-i18n="nav.home">Home</a>
+      <a href="#werk" data-i18n="nav.werk">Werk</a>
+      <a href="#creators" data-i18n="nav.creators">Creators</a>
+      <a href="#bestellen" data-i18n="nav.bestellen">Bestellen</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#over" data-i18n="nav.over">Over</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+      <a class="order-link" data-order-link href="https://discord.gg/StqqMKKeu6" target="_blank" rel="noopener noreferrer"><span data-i18n="cta.orderLong">Bestellen via Discord</span> ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Hero ===== -->
+    <section class="hero" id="home">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow" id="heroEyebrow">YouTube Thumbnail Designer <span aria-hidden="true">✦</span></span>
+          <h1 id="heroTitle">Jouw video verdient een thumbnail die <span class="grad">opvalt.</span></h1>
+          <p class="hero-sub" id="heroSub">
+            Sterke gaming thumbnails met kleur, karakter en een flinke dosis impact.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary order-link" data-order-link href="https://discord.gg/StqqMKKeu6" target="_blank" rel="noopener noreferrer"><span data-i18n="hero.orderBtn">Bestel jouw thumbnail</span> <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-ghost" href="#werk"><span data-i18n="hero.workBtn">Bekijk mijn werk</span> <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-note"><span class="status-dot" aria-hidden="true"></span> <span data-i18n="hero.note">Bestellen gaat makkelijk via Discord</span></div>
+          <div class="starting-price">
+            <span class="price-mark" aria-hidden="true">€</span>
+            <span class="price-copy"><small data-i18n="hero.priceSmall">Starttarief</small><strong><span data-i18n="hero.priceFrom">Vanaf</span> <span id="startingPrice">€5</span> <span data-i18n="hero.pricePer">per thumbnail</span></strong></span>
+            <a href="#bestellen"><span data-i18n="hero.priceLink">Bekijk hoe het werkt</span> <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="stats" id="stats"><!-- gevuld vanuit data.js --></div>
+        </div>
+        <div class="hero-art" aria-label="Voorbeeld van een YouTube-thumbnail">
+          <div class="hero-spark spark-one" aria-hidden="true">✦</div>
+          <div class="hero-spark spark-two" aria-hidden="true">✧</div>
+          <div class="hero-snowcap" aria-hidden="true"></div>
+          <div class="hero-image-wrap">
+            <img id="heroFeature" src="" alt="" />
+            <div class="hero-image-label"><span class="play-icon" aria-hidden="true">▶</span><span id="heroFeatureTitle">Featured thumbnail</span></div>
+          </div>
+          <div class="ornament ornament-blue" aria-hidden="true"></div>
+          <div class="ornament ornament-silver" aria-hidden="true"></div>
+          <div class="hero-sticker" aria-hidden="true">MD<span>MICKEY DESIGN</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Werk ===== -->
+    <section class="section" id="werk">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 data-i18n="werk.title">Werk</h2>
+          <p data-i18n="werk.sub">Een selectie van thumbnails gemaakt om op te vallen.</p>
+        </div>
+
+        <div class="filters" id="filters" role="tablist" aria-label="Filter op categorie"><!-- gevuld vanuit app.js --></div>
+        <div class="grid" id="grid"><!-- gevuld vanuit app.js --></div>
+        <p class="empty" id="empty" data-i18n="werk.empty" hidden>Geen thumbnails in deze categorie.</p>
+
+        <!-- Voor & na -->
+        <div class="ba-block" id="baBlock">
+          <div class="section-head ba-head">
+            <span class="eyebrow" data-i18n="werk.baEyebrow">Voor &amp; na</span>
+            <h2 data-i18n="werk.baTitle">Sleep om het verschil te zien</h2>
+            <p data-i18n="werk.baSub">Trek de slider en bekijk de onbewerkte video-still naast het eindresultaat.</p>
+          </div>
+          <div class="ba-grid" id="beforeAfter"><!-- gevuld vanuit data.js --></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Creators ===== -->
+    <section class="section creators-section" id="creators">
+      <div class="wrap">
+        <div class="section-head creators-head">
+          <span class="eyebrow" data-i18n="creators.eyebrow">Samenwerkingen</span>
+          <h2 data-i18n="creators.title">Creators met wie ik heb gewerkt</h2>
+          <p data-i18n="creators.sub">Een paar van de makers achter de video's waarvoor ik thumbnails heb ontworpen.</p>
+        </div>
+        <div class="creators-grid" id="creatorsGrid"></div>
+        <div class="creators-empty" id="creatorsEmpty">
+          <span class="creator-empty-mark" aria-hidden="true">MD</span>
+          <div>
+            <h3 data-i18n="creators.emptyTitle">Jouw kanaal kan hier ook staan</h3>
+            <p data-i18n="creators.emptyText">Stuur me via Discord een bericht om samen aan jouw volgende thumbnail te werken.</p>
+          </div>
+          <a class="btn btn-ghost order-link" data-order-link href="https://discord.gg/StqqMKKeu6" target="_blank" rel="noopener noreferrer"><span data-i18n="creators.emptyBtn">Start een samenwerking</span> <span aria-hidden="true">↗</span></a>
+        </div>
+
+        <!-- Reviews -->
+        <div class="reviews-block" id="reviewsBlock">
+          <div class="reviews-head">
+            <span class="eyebrow" data-i18n="creators.reviewsEyebrow">Reviews</span>
+            <h3 data-i18n="creators.reviewsTitle">Wat creators zeggen</h3>
+          </div>
+          <div class="reviews-grid" id="reviewsGrid"><!-- gevuld vanuit data.js --></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Bestellen ===== -->
+    <section class="section order-section" id="bestellen">
+      <div class="wrap">
+        <div class="section-head order-head">
+          <span class="eyebrow" data-i18n="order.eyebrow">Makkelijk geregeld</span>
+          <h2 data-i18n="order.title">Van video-idee naar thumbnail</h2>
+          <p data-i18n="order.sub">Bestel rechtstreeks bij Mickey Design via Discord. Zo werkt het:</p>
+        </div>
+        <div class="order-steps">
+          <article class="order-step">
+            <span class="step-number">01</span>
+            <span class="step-icon" aria-hidden="true">✉</span>
+            <h3 data-i18n="order.step1Title">Stuur je video</h3>
+            <p data-i18n="order.step1Text">Deel je videolink of vertel waar je video over gaat.</p>
+          </article>
+          <article class="order-step">
+            <span class="step-number">02</span>
+            <span class="step-icon" aria-hidden="true">✦</span>
+            <h3 data-i18n="order.step2Title">Bespreek je idee</h3>
+            <p data-i18n="order.step2Text">Vertel welke stijl, tekst en sfeer je voor ogen hebt.</p>
+          </article>
+          <article class="order-step">
+            <span class="step-number">03</span>
+            <span class="step-icon" aria-hidden="true">❄</span>
+            <h3 data-i18n="order.step3Title">Jouw thumbnail</h3>
+            <p data-i18n="order.step3Text">We stemmen de details af en gaan aan de slag met je ontwerp.</p>
+          </article>
+        </div>
+        <div class="order-cta">
+          <a class="btn btn-primary btn-large order-link" data-order-link href="https://discord.gg/StqqMKKeu6" target="_blank" rel="noopener noreferrer"><span data-i18n="order.cta">Start je bestelling via Discord</span> <span aria-hidden="true">↗</span></a>
+          <span data-i18n="order.note">Je hebt geen formulier nodig, stuur gewoon een bericht.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section faq-section" id="faq">
+      <div class="wrap">
+        <div class="section-head faq-head">
+          <span class="eyebrow" data-i18n="faq.eyebrow">Veelgestelde vragen</span>
+          <h2 data-i18n="faq.title">Even alles op een rij</h2>
+          <p data-i18n="faq.sub">De vragen die ik het vaakst krijg. Iets anders? Stuur me een bericht via Discord.</p>
+        </div>
+        <div class="faq-list" id="faqList"><!-- gevuld vanuit data.js --></div>
+      </div>
+    </section>
+
+    <!-- ===== Over ===== -->
+    <section class="section alt" id="over">
+      <div class="wrap over-grid">
+        <div>
+          <h2 data-i18n="over.title">Over mij</h2>
+          <p id="aboutText">
+            Ik ben een thumbnail designer met oog voor contrast, kleur en emotie. Mijn doel: binnen één seconde
+            de aandacht pakken en de klik winnen.
+          </p>
+          <ul class="skills" id="skills"><!-- gevuld vanuit data.js --></ul>
+        </div>
+        <div class="about-card">
+          <h3 data-i18n="over.card">Een thumbnail op maat</h3>
+          <ul class="checklist" id="checklist"><!-- gevuld vanuit data.js --></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section class="section" id="contact">
+      <div class="wrap contact-inner">
+        <span class="eyebrow" data-i18n="contact.eyebrow">Klaar om op te vallen?</span>
+        <h2 data-i18n="contact.title">Jouw volgende thumbnail begint hier.</h2>
+        <p data-i18n="contact.sub">Stuur je idee via Discord en we bespreken samen jouw thumbnail.</p>
+        <div class="contact-actions">
+          <a class="btn btn-primary btn-large order-link" data-order-link href="https://discord.gg/StqqMKKeu6" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19.7 5.3A18.6 18.6 0 0 0 15.1 4l-.6 1.2a17.2 17.2 0 0 0-5 0L8.9 4a18.6 18.6 0 0 0-4.6 1.3C1.4 9.6.6 13.8 1 18a18.7 18.7 0 0 0 5.7 2.9l1.2-2a12 12 0 0 1-1.9-.9l.5-.4a13.3 13.3 0 0 0 11 0l.5.4a12 12 0 0 1-1.9.9l1.2 2A18.7 18.7 0 0 0 23 18c.5-4.9-.8-9-3.3-12.7ZM8.6 15.7c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2Zm6.8 0c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2Z"/></svg>
+            <span data-i18n="contact.orderBtn">Bestel via Discord</span> <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        <div class="discord-widget" id="discordWidget">
+          <span class="dw-icon" aria-hidden="true">
+            <svg class="dw-glyph" id="dwGlyph" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M19.7 5.3A18.6 18.6 0 0 0 15.1 4l-.6 1.2a17.2 17.2 0 0 0-5 0L8.9 4a18.6 18.6 0 0 0-4.6 1.3C1.4 9.6.6 13.8 1 18a18.7 18.7 0 0 0 5.7 2.9l1.2-2a12 12 0 0 1-1.9-.9l.5-.4a13.3 13.3 0 0 0 11 0l.5.4a12 12 0 0 1-1.9.9l1.2 2A18.7 18.7 0 0 0 23 18c.5-4.9-.8-9-3.3-12.7ZM8.6 15.7c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2Zm6.8 0c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2Z"/></svg>
+            <img id="dwIcon" alt="" loading="lazy" hidden />
+          </span>
+          <span class="dw-info">
+            <strong id="dwName">Discord-server</strong>
+            <span class="dw-members"><span class="status-dot" aria-hidden="true"></span><span id="dwMembers">Leden worden geladen…</span></span>
+          </span>
+          <a class="btn btn-ghost btn-sm order-link" data-order-link href="https://discord.gg/StqqMKKeu6" target="_blank" rel="noopener noreferrer"><span data-i18n="contact.joinBtn">Join de server</span> <span aria-hidden="true">↗</span></a>
+        </div>
+
+        <p class="contact-note" data-i18n="contact.note">Je wordt doorgestuurd naar mijn Discord-server.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span id="footerName">Mickey Design</span>
+      <span class="dot">•</span>
+      <span id="footerYear"></span>
+      <span class="dot">•</span>
+      <span data-i18n="footer.tag">Voor al jouw thumbnails.</span>
+    </div>
+  </footer>
+
+  <!-- ===== Lightbox ===== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Thumbnail weergave" hidden>
+    <button class="lb-close" id="lbClose" aria-label="Sluiten">&times;</button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Vorige">&#8249;</button>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Volgende">&#8250;</button>
+
+    <figure class="lb-figure">
+      <img id="lbImage" src="" alt="" />
+      <figcaption class="lb-caption">
+        <div>
+          <h3 id="lbTitle"></h3>
+          <span class="tag" id="lbCategory"></span>
+        </div>
+        <a class="btn btn-primary btn-sm" id="lbLink" href="#" target="_blank" rel="noopener" hidden data-i18n="lb.view">Bekijk video</a>
+      </figcaption>
+    </figure>
+  </div>
+
+  <button class="to-top" id="toTop" type="button" aria-label="Terug naar boven">
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "Mickey Design — YouTube Thumbnail Designer",
+  "short_name": "Mickey Design",
+  "description": "Bekijk het thumbnailportfolio van Mickey Design en bestel jouw YouTube-thumbnail via Discord.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#06111e",
+  "theme_color": "#09a9ff",
+  "lang": "nl",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
