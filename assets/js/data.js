@@ -13,9 +13,8 @@ window.SITE = {
   name: "Mickey Design",                    // je naam of merknaam
   role: "YouTube Thumbnail Designer",
 
-  /* Webadres van je site. Wordt o.a. gebruikt voor SEO en de PWA.
-     Vervang dit door je eigen domein zodra je live gaat. */
-  url: "https://mickeydesign.nl",
+  /* Webadres van je site. Wordt o.a. gebruikt voor SEO en de PWA. */
+  url: "https://mickeydesign.vercel.app",
 
   /* Talen. "langs" zijn de talen die je aanbiedt, "defaultLang" is de taal
      waarmee de site opent. Kies uit "nl" en "en". */
@@ -43,37 +42,49 @@ window.SITE = {
   email: "",
 
   /* Het thema waarmee de site opent. Kies uit de id's in window.THEMES hieronder.
-     Standaard is dit "gta6" (GTA VI). Wil je een ander startthema? Verander dan
-     deze regel én de data-theme in index.html, zodat er geen flits is bij het laden.
-     Bezoekers kunnen zelf een ander thema kiezen via de knop in de header. */
-  defaultTheme: "gta6",
+     Standaard is dit "standaard" (de normale, blauwe look). Alle andere thema's
+     verschijnen automatisch tijdens hun periode (zie "seasonal" hieronder).
+     Bezoekers kunnen zelf altijd een ander thema kiezen via de knop in de header. */
+  defaultTheme: "standaard",
 
-  /* Seizoens-autothema. Als een bezoeker nog geen eigen thema koos, kiest de
-     site automatisch een passend thema op basis van de datum (bijv. Kerst in
-     december). Zodra de bezoeker zelf een thema kiest, wordt dat onthouden en
-     gaat de autokeuze niet meer voor.
+  /* Periode-thema's. De site opent met "standaard" (de normale look). Tijdens
+     een periode hieronder pakt de site automatisch dat thema; in de weken
+     ertussen is het weer "standaard". Zodra een bezoeker zelf een thema kiest,
+     wordt dat onthouden en gaat de autokeuze niet meer voor.
 
        from / to : maand-dag (from t/m to, dus "12-06" t/m "12-31")
        theme     : een id uit window.THEMES hieronder
 
+     Let op: periodes mogen elkaar niet overlappen en staan op datumvolgorde.
      Laat de lijst leeg ([]) om de autokeuze uit te zetten. */
   seasonal: [
+    { from: "01-01", to: "01-12", theme: "winter" },
+    { from: "01-20", to: "01-31", theme: "gta6" },
     { from: "02-07", to: "02-14", theme: "valentijn" },
+    { from: "02-22", to: "03-03", theme: "minecraft" },
+    { from: "03-28", to: "04-06", theme: "pasen" },
+    { from: "04-15", to: "04-24", theme: "rocketleague" },
+    { from: "05-03", to: "05-12", theme: "valorant" },
+    { from: "05-21", to: "05-30", theme: "fortnite" },
+    { from: "06-08", to: "06-17", theme: "cyberpunk" },
+    { from: "06-26", to: "07-05", theme: "retro" },
+    { from: "07-15", to: "08-10", theme: "zomer" },
+    { from: "09-22", to: "10-10", theme: "herfst" },
     { from: "10-25", to: "10-31", theme: "halloween" },
     { from: "11-20", to: "12-05", theme: "sinterklaas" },
-    { from: "12-06", to: "12-31", theme: "kerst" },
+    { from: "12-13", to: "12-31", theme: "kerst" },
   ],
 
-  /* "Thema van de week". Als een bezoeker nog geen eigen thema koos, pakt de
-     site automatisch één thema per week, zodat het rustig meebeweegt zonder
-     steeds te wisselen. Een bezoeker die zelf een thema kiest, houdt dat.
+  /* "Thema van de week" staat UIT: thema's wisselen nu via de periodes
+     hierboven in plaats van elke week. Zet "enabled" op true als je dit
+     toch wilt.
 
        enabled : aan/uit
        themes  : de thema's die meedoen (leeg = alle thema's)
        offset  : verschuift de volgorde (handig om met een ander thema te
                  beginnen)                                                       */
   themeOfWeek: {
-    enabled: true,
+    enabled: false,
     themes: ["gta6", "cyberpunk", "fortnite", "rocketleague", "minecraft", "valorant", "retro", "zomer", "halloween", "winter"],
     offset: 0,
   },

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mickeydesign.nl/sitemap.xml
+Sitemap: https://mickeydesign.vercel.app/sitemap.xml
