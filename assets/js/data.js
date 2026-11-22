@@ -188,7 +188,6 @@ window.CREATORS = [
       image    : pad naar je afbeelding OF een volledige URL
                  - eigen bestand  -> "images/mijn-thumb.jpg"
                  - externe link   -> "https://..."
-      video    : (optioneel) link naar de YouTube-video
       alt      : (optioneel) omschrijving voor toegankelijkheid
 
     TIP: zet je eigen bestanden in de map "images/" en verwijs ernaar
@@ -201,98 +200,96 @@ window.THUMBNAILS = [
     category: "GTA",
     image: "images/altijdmartingta6.png",
     fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=high%20energy%20youtube%20gaming%20thumbnail%20inspired%20by%20open%20world%20crime%20game%2C%20excited%20young%20male%20gamer%20wearing%20headset%20on%20left%2C%20neon%20pink%20and%20blue%20vice%20city%20sunset%2C%20bold%20game%20logo%20composition%2C%20cinematic&image_size=landscape_16_9",
-    video: "",
   },
   {
     title: "Bronze to Unreal Speedrun (World Record)",
     category: "Fortnite",
     image: "images/btou2.png",
     fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=high%20energy%20youtube%20gaming%20thumbnail%20inspired%20by%20open%20world%20crime%20game%2C%20excited%20young%20male%20gamer%20wearing%20headset%20on%20left%2C%20neon%20pink%20and%20blue%20vice%20city%20sunset%2C%20bold%20game%20logo%20composition%2C%20cinematic&image_size=landscape_16_9",
-    video: "",
   },
   {
     title: "$10.000 Setup Tour",
     category: "Fortnite",
     image: "images/setup.png",
     fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=high%20energy%20youtube%20gaming%20thumbnail%20inspired%20by%20open%20world%20crime%20game%2C%20excited%20young%20male%20gamer%20wearing%20headset%20on%20left%2C%20neon%20pink%20and%20blue%20vice%20city%20sunset%2C%20bold%20game%20logo%20composition%2C%20cinematic&image_size=landscape_16_9",
-    video: "",
   },
   {
     title: "Meedoen aan het Royalistiq toernooi!",
     category: "Fortnite",
     image: "images/jordystormroy.png",
     fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=polished%20youtube%20fortnite%20gaming%20thumbnail%2C%20surprised%20young%20male%20gamer%20in%20foreground%2C%20vibrant%20cyan%20blue%20background%2C%20game%20character%20and%20bold%20competition%20composition%2C%20high%20contrast&image_size=landscape_16_9",
-    video: "",
   },
   {
     title: "Bronze to Unreal Speedrun",
     category: "Fortnite",
     image: "images/bronzetounreal.png",
     fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=dynamic%20fortnite%20style%20youtube%20thumbnail%2C%20colorful%20cartoon%20battle%20royale%20character%20flying%20toward%20camera%2C%20bright%20blue%20sky%2C%20competitive%20rank%20emblems%20on%20the%20right%2C%20bold%20gaming%20composition&image_size=landscape_16_9",
-    video: "",
   },
   {
     title: "We got lucky in this Solo Cashcup!",
     category: "Fortnite",
     image: "images/solocc.png",
     fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=cinematic%20fortnite%20style%20youtube%20gaming%20thumbnail%2C%20cartoon%20character%20skydiving%20toward%20camera%20over%20island%2C%20bright%20blue%20sky%20with%20white%20speed%20lines%2C%20dramatic%20and%20colorful%20composition&image_size=landscape_16_9",
-    video: "",
   },
   {
     title: "GTA VI is eindelijk hier!",
     category: "GTA",
     image: "images/gta6-vice.png",
     fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=high%20energy%20youtube%20gaming%20thumbnail%20excited%20reaction%20to%20gta%206%2C%20vice%20city%20skyline%20with%20palm%20trees%20pink%20purple%20sunset%2C%20gta%206%20logo%2C%20vibrant%20cinematic%20colors&image_size=landscape_16_9",
-    video: "",
   },
   {
     title: "Eerste gameplay van GTA VI!",
     category: "GTA",
     image: "images/gta6-spelen.png",
     fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=youtube%20gaming%20thumbnail%20gamer%20at%20desk%20setup%20playing%20gta%206%2C%20neon%20pink%20and%20teal%20rgb%20lighting%2C%20gta%206%20game%20cases%2C%20monitor%20showing%20game%2C%20excited%20expression%2C%20vibrant&image_size=landscape_16_9",
-    video: "",
   },
   {
     title: "Reageren op GTA 6 Leaks!",
     category: "GTA",
     image: "images/sgtav.png",
     fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=bold%20youtube%20gaming%20thumbnail%2C%20vibrant%20colors%2C%20high%20contrast%2C%20dynamic%20composition&image_size=landscape_16_9",
-    video: "",
   },
   {
     title: "Best Loadout For Black Ops 6!",
     category: "Call of Duty",
     image: "images/bo6.png",
     fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=bold%20youtube%20gaming%20thumbnail%2C%20vibrant%20colors%2C%20high%20contrast%2C%20dynamic%20composition&image_size=landscape_16_9",
-    video: "",
   },
   {
     title: "Een Victory Royale Halen Op Elke Server?!",
     category: "Fortnite",
     image: "images/servers.png",
     fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=bold%20youtube%20gaming%20thumbnail%2C%20vibrant%20colors%2C%20high%20contrast%2C%20dynamic%20composition&image_size=landscape_16_9",
-    video: "",
   },
   {
     title: "4 Corners, 4 Mythics Challenge!",
     category: "Fortnite",
     image: "images/4c4m.png",
     fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=bold%20youtube%20gaming%20thumbnail%2C%20vibrant%20colors%2C%20high%20contrast%2C%20dynamic%20composition&image_size=landscape_16_9",
-    video: "",
   },
   {
     title: "It is Christmas Time in Fortnite!",
     category: "Fortnite",
     image: "images/kerstfn.png",
     fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=bold%20youtube%20gaming%20thumbnail%2C%20vibrant%20colors%2C%20high%20contrast%2C%20dynamic%20composition&image_size=landscape_16_9",
-    video: "",
   },
   {
     title: "Ranking all Fortnite Pro Players!",
     category: "Fortnite",
     image: "images/ranking.png",
     fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=bold%20youtube%20gaming%20thumbnail%2C%20vibrant%20colors%2C%20high%20contrast%2C%20dynamic%20composition&image_size=landscape_16_9",
-    video: "",
+  },
+  {
+    title: "DE MEEST GEKKE ACTIE IN GTA 6 OOIT?!",
+    category: "GTA",
+    image: "images/gta3.jpg",
+    fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=bold%20youtube%20gaming%20thumbnail%2C%20vibrant%20colors%2C%20high%20contrast%2C%20dynamic%20composition&image_size=landscape_16_9",
+  },
+  {
+    title: "Het leven van een MILJONAIR in GTA 6",
+    category: "GTA",
+    image: "images/gta4.jpg",
+    fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=bold%20youtube%20gaming%20thumbnail%2C%20vibrant%20colors%2C%20high%20contrast%2C%20dynamic%20composition&image_size=landscape_16_9",
   },
 ];
 
