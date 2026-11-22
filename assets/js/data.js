@@ -14,7 +14,7 @@ window.SITE = {
   role: "YouTube Thumbnail Designer",
 
   /* Webadres van je site. Wordt o.a. gebruikt voor SEO en de PWA. */
-  url: "https://mickeydesign.vercel.app",
+  url: "https://mickeydesign.nl",
 
   /* Talen. "langs" zijn de talen die je aanbiedt, "defaultLang" is de taal
      waarmee de site opent. Kies uit "nl" en "en". */

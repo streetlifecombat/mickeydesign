@@ -194,7 +194,8 @@
     const symbols = Array.isArray(theme.symbols) && theme.symbols.length ? theme.symbols : [];
     if (!symbols.length) return;
 
-    const count = 48;
+    // Minder deeltjes op smalle schermen om de weergave soepel te houden.
+    const count = window.innerWidth < 720 ? 12 : 22;
     for (let i = 0; i < count; i += 1) {
       const depth = Math.pow(Math.random(), 1.6); // 0 = dichtbij, 1 = ver weg
       const size = 30 - depth * 19;               // 30px dichtbij .. 11px ver
@@ -790,20 +791,29 @@
     let targetY = window.innerHeight / 3;
     let x = targetX;
     let y = targetY;
+    let rafId = null;
+
+    // De lus stopt zodra de glow de cursor heeft ingehaald, en start weer bij
+    // een nieuwe muisbeweging. Dat spaart rekenkracht wanneer er niets gebeurt.
+    const loop = () => {
+      const dx = targetX - x;
+      const dy = targetY - y;
+      x += dx * 0.14;
+      y += dy * 0.14;
+      glow.style.transform = "translate3d(" + x + "px, " + y + "px, 0) translate(-50%, -50%)";
+      if (Math.abs(dx) < 0.1 && Math.abs(dy) < 0.1) { rafId = null; return; }
+      rafId = window.requestAnimationFrame(loop);
+    };
+    const start = () => { if (rafId == null) rafId = window.requestAnimationFrame(loop); };
 
     window.addEventListener("pointermove", (e) => {
       targetX = e.clientX;
       targetY = e.clientY;
       glow.classList.add("is-active");
+      start();
     }, { passive: true });
 
-    const loop = () => {
-      x += (targetX - x) * 0.14;
-      y += (targetY - y) * 0.14;
-      glow.style.transform = "translate3d(" + x + "px, " + y + "px, 0) translate(-50%, -50%)";
-      window.requestAnimationFrame(loop);
-    };
-    loop();
+    start();
   }
 
   /* ---------- Custom cursor (volgend ringetje) ---------- */
@@ -817,6 +827,19 @@
     let targetY = window.innerHeight / 2;
     let x = targetX;
     let y = targetY;
+    let rafId = null;
+
+    // Zelfde aanpak als de glow: de lus pauzeert zodra het ringetje stil staat.
+    const loop = () => {
+      const dx = targetX - x;
+      const dy = targetY - y;
+      x += dx * 0.2;
+      y += dy * 0.2;
+      dot.style.transform = "translate3d(" + x + "px, " + y + "px, 0) translate(-50%, -50%)";
+      if (Math.abs(dx) < 0.1 && Math.abs(dy) < 0.1) { rafId = null; return; }
+      rafId = window.requestAnimationFrame(loop);
+    };
+    const start = () => { if (rafId == null) rafId = window.requestAnimationFrame(loop); };
 
     window.addEventListener("pointermove", (e) => {
       targetX = e.clientX;
@@ -826,18 +849,13 @@
         ? e.target.closest("a, button, .card, .filter, .theme-option, .faq-q, .ba-stage, .review-link")
         : null;
       dot.classList.toggle("is-hover", !!hit);
+      start();
     }, { passive: true });
 
     document.addEventListener("pointerdown", () => dot.classList.add("is-down"));
     document.addEventListener("pointerup", () => dot.classList.remove("is-down"));
 
-    const loop = () => {
-      x += (targetX - x) * 0.2;
-      y += (targetY - y) * 0.2;
-      dot.style.transform = "translate3d(" + x + "px, " + y + "px, 0) translate(-50%, -50%)";
-      window.requestAnimationFrame(loop);
-    };
-    loop();
+    start();
   }
 
   /* ---------- Loader ---------- */
