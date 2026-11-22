@@ -1119,14 +1119,6 @@
     img.alt = item.alt || item.title || "";
     document.getElementById("lbTitle").textContent = item.title || "";
     document.getElementById("lbCategory").textContent = item.category || "";
-
-    const link = document.getElementById("lbLink");
-    if (item.video) {
-      link.href = item.video;
-      link.hidden = false;
-    } else {
-      link.hidden = true;
-    }
   }
 
   /* ---------- Scrollanimaties ---------- */

@@ -479,7 +479,6 @@ window.I18N = {
       members: "leden op de server",
     },
     footer: { tag: "Voor al jouw thumbnails." },
-    lb: { view: "Bekijk video" },
     common: { view: "Bekijk", starsAria: "{n} van 5 sterren" },
   },
   en: {
@@ -557,7 +556,6 @@ window.I18N = {
       members: "members on the server",
     },
     footer: { tag: "For all your thumbnails." },
-    lb: { view: "Watch video" },
     common: { view: "View", starsAria: "{n} out of 5 stars" },
   },
 };
