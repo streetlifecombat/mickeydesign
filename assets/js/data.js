@@ -176,6 +176,7 @@ window.THEMES = [
 */
 window.CREATORS = [
   { name: "AltijdMartin", channel: "@AltijdMartin", avatar: "images/altijdmartin.png", url: "https://www.youtube.com/@AltijdMartin" },
+  { name: "Sebas de Jong", channel: "@SebasdeJongh", avatar: "images/sebas.jpg", url: "https://www.youtube.com/@SebasdeJongh" },  
   { name: "JordyStorm", channel: "@JordyStorm", avatar: "images/jordystorm.jpg", url: "https://www.youtube.com/@JordyStorm" },
   { name: "JCM", channel: "@JCMYT", avatar: "images/jcm.jpg", url: "https://www.youtube.com/@JCMYT" },
 ];
@@ -251,6 +252,48 @@ window.THUMBNAILS = [
     fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=youtube%20gaming%20thumbnail%20gamer%20at%20desk%20setup%20playing%20gta%206%2C%20neon%20pink%20and%20teal%20rgb%20lighting%2C%20gta%206%20game%20cases%2C%20monitor%20showing%20game%2C%20excited%20expression%2C%20vibrant&image_size=landscape_16_9",
     video: "",
   },
+  {
+    title: "Reageren op GTA 6 Leaks!",
+    category: "GTA",
+    image: "images/sgtav.png",
+    fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=bold%20youtube%20gaming%20thumbnail%2C%20vibrant%20colors%2C%20high%20contrast%2C%20dynamic%20composition&image_size=landscape_16_9",
+    video: "",
+  },
+  {
+    title: "Best Loadout For Black Ops 6!",
+    category: "Call of Duty",
+    image: "images/bo6.png",
+    fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=bold%20youtube%20gaming%20thumbnail%2C%20vibrant%20colors%2C%20high%20contrast%2C%20dynamic%20composition&image_size=landscape_16_9",
+    video: "",
+  },
+  {
+    title: "Een Victory Royale Halen Op Elke Server?!",
+    category: "Fortnite",
+    image: "images/servers.png",
+    fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=bold%20youtube%20gaming%20thumbnail%2C%20vibrant%20colors%2C%20high%20contrast%2C%20dynamic%20composition&image_size=landscape_16_9",
+    video: "",
+  },
+  {
+    title: "4 Corners, 4 Mythics Challenge!",
+    category: "Fortnite",
+    image: "images/4c4m.png",
+    fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=bold%20youtube%20gaming%20thumbnail%2C%20vibrant%20colors%2C%20high%20contrast%2C%20dynamic%20composition&image_size=landscape_16_9",
+    video: "",
+  },
+  {
+    title: "It is Christmas Time in Fortnite!",
+    category: "Fortnite",
+    image: "images/kerstfn.png",
+    fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=bold%20youtube%20gaming%20thumbnail%2C%20vibrant%20colors%2C%20high%20contrast%2C%20dynamic%20composition&image_size=landscape_16_9",
+    video: "",
+  },
+  {
+    title: "Ranking all Fortnite Pro Players!",
+    category: "Fortnite",
+    image: "images/ranking.png",
+    fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=bold%20youtube%20gaming%20thumbnail%2C%20vibrant%20colors%2C%20high%20contrast%2C%20dynamic%20composition&image_size=landscape_16_9",
+    video: "",
+  },
 ];
 
 /* ---------- 4. Voor & na (sleepbare slider) ---------- */
@@ -263,6 +306,7 @@ window.THUMBNAILS = [
 */
 window.BEFORE_AFTER = [
   { title: "$10.000 Setup Tour", before: "images/before-setup.png", after: "images/setup.png" },
+  { title: "Reageren op GTA 6 Leaks!", before: "images/sgtav.png", after: "images/gta.png" },
 ];
 
 /* ---------- 5. Reviews ---------- */
