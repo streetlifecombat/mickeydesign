@@ -348,8 +348,10 @@ p { margin: 0 0 1em; }
   box-shadow: 0 0 12px rgba(66, 226, 176, .75);
   animation: status-pulse 2s ease-in-out infinite;
 }
+/* Pulst via opacity i.p.v. box-shadow: veel goedkoper om te tekenen. */
 @keyframes status-pulse {
-  50% { box-shadow: 0 0 2px rgba(66, 226, 176, .35); }
+  0%, 100% { opacity: 1; }
+  50% { opacity: .45; }
 }
 
 .hero-art {
@@ -369,6 +371,7 @@ p { margin: 0 0 1em; }
   background: linear-gradient(145deg, rgba(22, 106, 159, .66), rgba(6, 23, 41, .95));
   box-shadow: 0 30px 80px rgba(0, 0, 0, .48), 0 0 55px rgba(0, 154, 255, .18);
   transform: rotate(2deg);
+  will-change: transform;
   animation: image-float 6s ease-in-out infinite;
 }
 .hero-image-wrap img {
@@ -905,10 +908,12 @@ main section[id] { scroll-margin-top: 86px; }
   from { background-position: 0% 50%; }
   to { background-position: 100% 50%; }
 }
-.hero-glow { animation: aurora-drift 18s ease-in-out infinite alternate; }
+/* Rustige, goedkope zweving: alleen verschuiven (geen schalen), zodat de
+   browser de gloed niet telkens opnieuw hoeft te tekenen. */
+.hero-glow { animation: aurora-drift 18s ease-in-out infinite alternate; will-change: transform; }
 @keyframes aurora-drift {
-  from { transform: translate3d(-1.5%, -1%, 0) scale(1); }
-  to { transform: translate3d(1.5%, 1.5%, 0) scale(1.07); }
+  from { transform: translate3d(-1.5%, 0, 0); }
+  to { transform: translate3d(1.5%, 0, 0); }
 }
 .card {
   animation: card-arrive .6s cubic-bezier(.2, .7, .25, 1) both;
