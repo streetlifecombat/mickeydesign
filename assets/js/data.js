@@ -291,6 +291,12 @@ window.THUMBNAILS = [
     image: "images/gta4.jpg",
     fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=bold%20youtube%20gaming%20thumbnail%2C%20vibrant%20colors%2C%20high%20contrast%2C%20dynamic%20composition&image_size=landscape_16_9",
   },
+  {
+    title: "Future Highlights #1 | Diego E. 💎",
+    category: "GTA",
+    image: "images/diego.jpg",
+    fallback: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=bold%20youtube%20gaming%20thumbnail%2C%20vibrant%20colors%2C%20high%20contrast%2C%20dynamic%20composition&image_size=landscape_16_9",
+  },
 ];
 
 /* ---------- 4. Voor & na (sleepbare slider) ---------- */
